@@ -12,18 +12,18 @@ public class DashboardViewController : BaseViewController
     public void SimulateClear()
     {
         var data = simulationService.GenerateWeather(WeatherType.Clear);
-        Debug.Log($"Simulated: {data.weatherType}");
+        WeatherSystem.Instance.Context.SetWeather(data);
     }
 
     public void SimulateRain()
     {
         var data = simulationService.GenerateWeather(WeatherType.Rain);
-        Debug.Log($"Simulated: {data.weatherType}");
+        WeatherSystem.Instance.Context.SetWeather(data);
     }
 
     public void SimulateSnow()
     {
         var data = simulationService.GenerateWeather(WeatherType.Snow);
-        Debug.Log($"Simulated: {data.weatherType}");
+        WeatherSystem.Instance.Context.SetWeather(data);
     }
 }
