@@ -8,6 +8,12 @@ public class VisualizationWeatherListener : MonoBehaviour
     {
         Debug.Log("VisualizationWeatherListener enabled, subscribing to weather changes.");
         WeatherSystem.Instance.Context.OnWeatherChanged += ApplyWeather;
+
+        var current = WeatherSystem.Instance.Context.CurrentWeather;
+        if (current != null)
+        {
+            ApplyWeather(current);
+        }
     }
 
     private void OnDisable()
