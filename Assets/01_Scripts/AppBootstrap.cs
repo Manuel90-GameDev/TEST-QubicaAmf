@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class AppBootstrap : MonoBehaviour
 {
-    public GameObject visualizationRoot;
-    public GameObject dashboardRoot;
+    public DashboardViewController dashboardView;
+    public VisualizationViewController visualizationView;
 
     private DashboardState dashboardState;
     private VisualizationState visualizationState;
 
     void Start()
     {
-        dashboardState = new DashboardState(dashboardRoot);
-        visualizationState = new VisualizationState(visualizationRoot);
+        dashboardState = new DashboardState(dashboardView);
+        visualizationState = new VisualizationState(visualizationView);
 
         GameManager.Instance.StateMachine.ChangeState(dashboardState);
     }
@@ -19,10 +19,12 @@ public class AppBootstrap : MonoBehaviour
     public void GoToVisualization()
     {
         GameManager.Instance.StateMachine.ChangeState(visualizationState);
+        Debug.Log("Exit Dashboard");
     }
 
     public void GoToDashboard()
     {
         GameManager.Instance.StateMachine.ChangeState(dashboardState);
+        Debug.Log("Enter Dashboard");
     }
 }

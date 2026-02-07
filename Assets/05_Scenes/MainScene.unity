@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 115765331}
+  - component: {fileID: 115765332}
   m_Layer: 0
   m_Name: VisualizzationRoot
   m_TagString: Untagged
@@ -152,6 +153,18 @@ Transform:
   - {fileID: 983210944}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &115765332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115765330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079d92a803087914e9535009a70ab767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &316461804
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,8 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8cbd71eac04e34cb729939c4686e8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualizationRoot: {fileID: 115765330}
-  dashboardRoot: {fileID: 936194947}
+  dashboardView: {fileID: 936194949}
+  visualizationView: {fileID: 115765332}
 --- !u!114 &316461806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +694,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 936194948}
+  - component: {fileID: 936194949}
   m_Layer: 0
   m_Name: DashBoardRoot
   m_TagString: Untagged
@@ -704,6 +718,18 @@ Transform:
   - {fileID: 1899580348}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &936194949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936194947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b00fe0681e3fc249bbc16472cee4512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &983210943
 GameObject:
   m_ObjectHideFlags: 0

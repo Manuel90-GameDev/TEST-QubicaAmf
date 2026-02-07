@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class DashboardState : IState
 {
-    private GameObject root;
+    private DashboardViewController view;
 
-    public DashboardState(GameObject dashboardRoot)
+    public DashboardState(DashboardViewController view)
     {
-        root = dashboardRoot;
+        this.view = view;
     }
 
     public void Enter()
     {
-        root.SetActive(true);
+        view.OnEnter();
     }
 
     public void Exit()
     {
-        root.SetActive(false);
+        view.OnExit();
     }
 }

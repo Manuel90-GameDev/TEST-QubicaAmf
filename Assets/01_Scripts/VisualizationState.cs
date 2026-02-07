@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class VisualizationState : IState
 {
-    private GameObject root;
+    private VisualizationViewController view;
 
-    public VisualizationState(GameObject visualizationRoot)
+    public VisualizationState(VisualizationViewController view)
     {
-        root = visualizationRoot;
+        this.view = view;
     }
 
     public void Enter()
     {
-        root.SetActive(true);
+        view.OnEnter();
     }
 
     public void Exit()
     {
-        root.SetActive(false);
+        view.OnExit();
     }
 }
