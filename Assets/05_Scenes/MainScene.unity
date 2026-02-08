@@ -866,7 +866,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 391015788}
-  - component: {fileID: 391015787}
+  - component: {fileID: 391015790}
+  - component: {fileID: 391015789}
   m_Layer: 0
   m_Name: WeatherServiceRoot
   m_TagString: Untagged
@@ -874,18 +875,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &391015787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391015786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 631402671dc4ed047a3e5f17e8ecb850, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &391015788
 Transform:
   m_ObjectHideFlags: 0
@@ -901,6 +890,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &391015789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391015786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631402671dc4ed047a3e5f17e8ecb850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &391015790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391015786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b9402268c1bed4fbb68d776db4756c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serviceBehaviour: {fileID: 391015789}
 --- !u!1 &407290681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,6 +1692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b00fe0681e3fc249bbc16472cee4512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weatherService: {fileID: 391015790}
 --- !u!1 &983210943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,6 +2558,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505520898}
   m_CullTransparentMesh: 1
+--- !u!1 &1672679263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1672679266}
+  - component: {fileID: 1672679265}
+  - component: {fileID: 1672679264}
+  m_Layer: 0
+  m_Name: WeatherServiceRoot (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1672679264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672679263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c29daeca4c95944b0e2b1764c183c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1672679265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672679263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b9402268c1bed4fbb68d776db4756c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serviceBehaviour: {fileID: 1672679264}
+--- !u!4 &1672679266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672679263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706839981
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,4 +3588,5 @@ SceneRoots:
   - {fileID: 936194948}
   - {fileID: 115765331}
   - {fileID: 391015788}
+  - {fileID: 1672679266}
   - {fileID: 737880722}
