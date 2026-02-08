@@ -3,6 +3,8 @@ using UnityEngine;
 public class VisualizationWeatherListener : MonoBehaviour
 {
     [SerializeField] private Light directionalLight;
+    [SerializeField] private GameObject snowFX;
+    [SerializeField] private GameObject rainFX;
 
     private void OnEnable()
     {
@@ -26,6 +28,9 @@ public class VisualizationWeatherListener : MonoBehaviour
     {
         Debug.Log($"Applying Weather: {data.weatherType}");
 
+        snowFX.SetActive(false);
+        rainFX.SetActive(false);
+
         switch (data.weatherType)
         {
             case WeatherType.Clear:
@@ -34,10 +39,12 @@ public class VisualizationWeatherListener : MonoBehaviour
 
             case WeatherType.Rain:
                 directionalLight.color = Color.gray;
+                rainFX.SetActive(true);
                 break;
 
             case WeatherType.Snow:
                 directionalLight.color = Color.cyan;
+                snowFX.SetActive(true);
                 break;
         }
     }
