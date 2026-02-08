@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: WeatherFX
+  m_EditorClassIdentifier: 
+  m_GroupName: WeatherFX
+  m_GUID: 3bf9b4d4a16aa8d4586bedf434c45a65
+  m_SerializeEntries:
+  - m_GUID: c5aa6706280c5b74c8e4c2393e53b56b
+    m_Address: SnowFX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f643946963c7915409856cd65305915b
+    m_Address: RainFX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 196e5da1ae015c14a96c997d3076920e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: eefa43e8739c20b468bad67a1716a54d, type: 2}
+    - {fileID: 11400000, guid: 04147d427709ee04cb0731f41deea3f9, type: 2}
