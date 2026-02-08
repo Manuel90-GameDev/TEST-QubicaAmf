@@ -1644,6 +1644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 983210944}
   - component: {fileID: 983210945}
+  - component: {fileID: 983210946}
   m_Layer: 0
   m_Name: 3DSceneRoot
   m_TagString: Untagged
@@ -1681,8 +1682,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 410087040}
-  snowFX: {fileID: 0}
-  rainFX: {fileID: 0}
+  fxLoader: {fileID: 983210946}
+--- !u!114 &983210946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983210943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bddd8377d2ac9747900289c295b5ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1008823902
 GameObject:
   m_ObjectHideFlags: 0
