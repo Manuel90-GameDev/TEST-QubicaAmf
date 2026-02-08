@@ -2,28 +2,25 @@ using UnityEngine;
 
 public class DashboardViewController : BaseViewController
 {
-    private SimulationWeatherService simulationService;
-
-    private void Awake()
-    {
-        simulationService = new SimulationWeatherService();
-    }
+    [SerializeField] private WeatherServiceController weatherService;
 
     public void SimulateClear()
     {
-        var data = simulationService.GenerateWeather(WeatherType.Clear);
-        WeatherSystem.Instance.Context.SetWeather(data);
+        WeatherSystem.Instance.Context.SetWeather(new WeatherData(WeatherType.Clear));
     }
 
     public void SimulateRain()
     {
-        var data = simulationService.GenerateWeather(WeatherType.Rain);
-        WeatherSystem.Instance.Context.SetWeather(data);
+        WeatherSystem.Instance.Context.SetWeather(new WeatherData(WeatherType.Rain));
     }
 
     public void SimulateSnow()
     {
-        var data = simulationService.GenerateWeather(WeatherType.Snow);
-        WeatherSystem.Instance.Context.SetWeather(data);
+        WeatherSystem.Instance.Context.SetWeather(new WeatherData(WeatherType.Snow));
+    }
+
+    public void RequestRealWeather()
+    {
+        weatherService.RequestWeather();
     }
 }

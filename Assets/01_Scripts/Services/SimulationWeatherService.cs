@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class SimulationWeatherService
+public class SimulationWeatherService : MonoBehaviour, IWeatherService
 {
-    public WeatherData GenerateWeather(WeatherType type)
+    public void RequestWeather()
     {
-        //return new WeatherData
-        //{
-        //    temperature = Random.Range(-5f, 30f),
-        //    windSpeed = Random.Range(0f, 15f),
-        //    weatherType = type
-        //};
+        var randomType = (WeatherType)Random.Range(0,3);
+        var data = new WeatherData(randomType);
 
-        return new WeatherData(type);
+        WeatherSystem.Instance.Context.SetWeather(data);
     }
 }
