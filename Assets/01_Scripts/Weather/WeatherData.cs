@@ -6,4 +6,9 @@ public class WeatherData
     public float temperature;
     public float windSpeed;
     public WeatherType weatherType;
+
+    public WeatherData(WeatherType type)
+    {
+        weatherType = type;
+    }
 }
