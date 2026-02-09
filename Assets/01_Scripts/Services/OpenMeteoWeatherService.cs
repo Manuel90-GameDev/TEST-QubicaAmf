@@ -4,7 +4,7 @@ using System.Collections;
 
 public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
 {
-    private const string URL = "https://api.open-meteo.com/v1/forecast?latitude=45.46&longitude=9.19&current_weather=true";
+    private const string URL = "https://api.open-meteo.com/v1/forecast?latitude=56.210949&longitude=159.346725&current_weather=true";
 
     private void Start()
     {
@@ -49,13 +49,22 @@ public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
 
     private WeatherData ConvertWeather(CurrentWeather cw)
     {
-        var type = WeatherType.Clear;
+        WeatherType type = WeatherType.Clear;
 
-        if (cw.weathercode >= 70)
+        int code = cw.weathercode;
+
+        //SNOW
+        if (code == 71 || code == 73 || code == 75 ||
+            code == 77 ||
+            code == 85 || code == 86)
         {
             type = WeatherType.Snow;
         }
-        else if (cw.weathercode >= 50)
+
+        //RAIN
+        else if (code == 51 || code == 53 || code == 55 ||
+                    code == 61 || code == 63 || code == 65 ||
+                    code == 80 || code == 81 || code == 82)
         {
             type = WeatherType.Rain;
         }
