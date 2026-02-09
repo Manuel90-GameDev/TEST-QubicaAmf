@@ -10,4 +10,6 @@ public class OpenMeteoResponse
 public class CurrentWeather
 {
     public int weathercode;
+    public float temperature;
+    public float windspeed;
 }

@@ -40,26 +40,30 @@ public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
 
         Debug.Log("Weather Code: " + response.current_weather.weathercode);
 
-        var data = ConvertWeather(response.current_weather.weathercode);
+        var data = ConvertWeather(response.current_weather);
 
         WeatherSystem.Instance.Context.SetWeather(data);
 
         Debug.Log("WeatherSystem SetWeather CALLED");
     }
 
-    private WeatherData ConvertWeather(int code)
+    private WeatherData ConvertWeather(CurrentWeather cw)
     {
         var type = WeatherType.Clear;
 
-        if (code >= 70)
+        if (cw.weathercode >= 70)
         {
             type = WeatherType.Snow;
         }
-        else if (code >= 50)
+        else if (cw.weathercode >= 50)
         {
             type = WeatherType.Rain;
         }
 
-        return new WeatherData(type);
+        return new WeatherData(type)
+        {
+            temperature = cw.temperature,
+            windSpeed = cw.windspeed
+        };
     }
 }
