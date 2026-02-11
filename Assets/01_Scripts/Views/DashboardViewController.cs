@@ -19,8 +19,8 @@ public class DashboardViewController : BaseViewController
         WeatherSystem.Instance.Context.SetWeather(new WeatherData(WeatherType.Snow));
     }
 
-    public void RequestRealWeather()
+    public void RequestRealWeather(LocationData location)
     {
-        weatherService.RequestWeather();
+        weatherService.RequestWeather(location);
     }
 }

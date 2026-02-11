@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IWeatherService
 {
-    void RequestWeather();
+    void RequestWeather(LocationData location);
 }

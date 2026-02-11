@@ -9,21 +9,17 @@ public class WeatherServiceController : MonoBehaviour
     private void Awake()
     {
         service = serviceBehaviour as IWeatherService;
-
-        if (serviceBehaviour == null)
-        {
-            Debug.LogError("Service Behaviour NOT assigned");
-        }
-
-        if (service == null)
-        {
-            Debug.LogError("Assigned behaviour does not implement IWeatherService");
-        }
     }
 
-    public void RequestWeather()
+    public void RequestWeather(LocationData location)
     {
-        Debug.Log("WeatherServiceController RequestWeather CALLED");
-        service.RequestWeather();
+        if (service is OpenMeteoWeatherService api)
+        {
+            api.RequestWeather(location);
+        }
+        else
+        {
+            service.RequestWeather(location);
+        } 
     }
 }

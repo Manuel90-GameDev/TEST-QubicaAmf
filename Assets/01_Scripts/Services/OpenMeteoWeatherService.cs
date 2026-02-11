@@ -1,27 +1,28 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Collections;
+using System.Globalization;
 
 public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
 {
-    private const string URL = "https://api.open-meteo.com/v1/forecast?latitude=56.210949&longitude=159.346725&current_weather=true";
+    private const string URL = "https://api.open-meteo.com/v1/forecast?current_weather=true";
 
-    private void Start()
-    {
-        RequestWeather();
-    }
-
-    public void RequestWeather()
+    public void RequestWeather(LocationData location)
     {
         Debug.Log("OpenMeteo Request START");
-        StartCoroutine(GetWeather());
+        StartCoroutine(GetWeather(location));
     }
 
-    private IEnumerator GetWeather()
+    private IEnumerator GetWeather(LocationData location)
     {
         Debug.Log("API CALL START");
 
-        using var request = UnityWebRequest.Get(URL);
+        string lat = location.latitude.ToString(CultureInfo.InvariantCulture);
+        string lon = location.longitude.ToString(CultureInfo.InvariantCulture);
+
+        string url = $"{URL}&latitude={lat}&longitude={lon}";
+
+        using var request = UnityWebRequest.Get(url);
 
         yield return request.SendWebRequest();
 
@@ -63,8 +64,8 @@ public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
 
         //RAIN
         else if (code == 51 || code == 53 || code == 55 ||
-                    code == 61 || code == 63 || code == 65 ||
-                    code == 80 || code == 81 || code == 82)
+                 code == 61 || code == 63 || code == 65 ||
+                 code == 80 || code == 81 || code == 82)
         {
             type = WeatherType.Rain;
         }
