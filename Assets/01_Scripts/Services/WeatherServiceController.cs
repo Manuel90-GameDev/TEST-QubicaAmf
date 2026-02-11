@@ -10,13 +10,15 @@ public class WeatherServiceController : MonoBehaviour
     {
         service = serviceBehaviour as IWeatherService;
 
-        Debug.Log("ServiceController Awake");
-        Debug.Log("Assigned Behaviour: " + serviceBehaviour);
+        if (serviceBehaviour == null)
+        {
+            Debug.LogError("Service Behaviour NOT assigned");
+        }
 
         if (service == null)
-            Debug.LogError("SERVICE IS NULL");
-        else
-            Debug.Log("Service Type: " + service.GetType());
+        {
+            Debug.LogError("Assigned behaviour does not implement IWeatherService");
+        }
     }
 
     public void RequestWeather()

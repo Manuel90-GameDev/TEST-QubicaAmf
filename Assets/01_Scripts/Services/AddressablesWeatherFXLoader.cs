@@ -36,6 +36,7 @@ public class AddressablesWeatherFXLoader : MonoBehaviour
         if (currentHandle.IsValid())
         {
             Addressables.Release(currentHandle);
+            currentHandle = default;
         }
     }
 }

@@ -2,5 +2,15 @@ using UnityEngine;
 
 public class VisualizationViewController : BaseViewController
 {
-    // Can add specific logic for the Visualization view here
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        Debug.Log("Visualization ENTER");
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
+        Debug.Log("Visualization EXIT");
+    }
 }

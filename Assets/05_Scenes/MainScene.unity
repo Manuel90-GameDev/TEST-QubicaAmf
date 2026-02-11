@@ -841,7 +841,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1981699725}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &316461808
@@ -4287,7 +4288,7 @@ GameObject:
   - component: {fileID: 1981699722}
   - component: {fileID: 1981699721}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasFPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4383,7 +4384,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1685409746}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 316461807}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4714,7 +4715,6 @@ SceneRoots:
   - {fileID: 316461807}
   - {fileID: 936194948}
   - {fileID: 115765331}
-  - {fileID: 1981699725}
   - {fileID: 391015788}
   - {fileID: 1672679266}
   - {fileID: 737880722}
