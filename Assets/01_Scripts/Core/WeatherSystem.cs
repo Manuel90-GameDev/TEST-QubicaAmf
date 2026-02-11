@@ -19,12 +19,4 @@ public class WeatherSystem : MonoBehaviour
 
         Context = new WeatherContext();
     }
-
-    private void Start()
-    {
-        Context.OnWeatherChanged += data =>
-        {
-            Debug.Log($"Weather Changed: {data.weatherType}");
-        };
-    }
 }

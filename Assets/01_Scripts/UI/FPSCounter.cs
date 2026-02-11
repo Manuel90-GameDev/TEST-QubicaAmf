@@ -19,11 +19,17 @@ public class FPSCounter : MonoBehaviour
             float fps = _frameCount / _timer;
 
             if (fps >= 60)
+            {
                 fpsText.color = Color.green;
+            }
             else if (fps >= 30)
+            {
                 fpsText.color = Color.yellow;
+            }
             else
+            {
                 fpsText.color = Color.red;
+            }
 
             fpsText.text = $"FPS: {Mathf.RoundToInt(fps)}";
 

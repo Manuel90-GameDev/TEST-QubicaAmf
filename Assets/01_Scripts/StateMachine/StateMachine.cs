@@ -10,7 +10,9 @@ public class StateMachine
         {
             _currentState.Exit();
         }
+
         _currentState = newState;
+
         if (_currentState != null)
         {
             _currentState.Enter();

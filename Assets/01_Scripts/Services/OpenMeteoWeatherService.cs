@@ -15,8 +15,6 @@ public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
 
     private IEnumerator GetWeather(LocationData location)
     {
-        Debug.Log("API CALL START");
-
         string lat = location.latitude.ToString(CultureInfo.InvariantCulture);
         string lon = location.longitude.ToString(CultureInfo.InvariantCulture);
 
@@ -37,15 +35,9 @@ public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
         var json = request.downloadHandler.text;
         var response = JsonUtility.FromJson<OpenMeteoResponse>(json);
 
-        Debug.Log("JSON RECEIVED");
-
-        Debug.Log("Weather Code: " + response.current_weather.weathercode);
-
         var data = ConvertWeather(response.current_weather);
 
         WeatherSystem.Instance.Context.SetWeather(data);
-
-        Debug.Log("WeatherSystem SetWeather CALLED");
     }
 
     private WeatherData ConvertWeather(CurrentWeather cw)

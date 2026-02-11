@@ -19,12 +19,10 @@ public class AppBootstrap : MonoBehaviour
     public void GoToVisualization()
     {
         GameManager.Instance.StateMachine.ChangeState(visualizationState);
-        Debug.Log("Exit Dashboard");
     }
 
     public void GoToDashboard()
     {
         GameManager.Instance.StateMachine.ChangeState(dashboardState);
-        Debug.Log("Enter Dashboard");
     }
 }

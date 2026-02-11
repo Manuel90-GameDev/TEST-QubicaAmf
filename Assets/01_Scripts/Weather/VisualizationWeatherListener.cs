@@ -25,8 +25,6 @@ public class VisualizationWeatherListener : MonoBehaviour
     {
         fxLoader.ClearCurrentFX();
 
-        Debug.Log("Visualization APPLY WEATHER");
-
         switch (data.weatherType)
         {
             case WeatherType.Clear:

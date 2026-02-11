@@ -11,7 +11,6 @@ public class DashboardWeatherDisplay : MonoBehaviour
     {
         if (WeatherSystem.Instance == null || WeatherSystem.Instance.Context == null)
         {
-            Debug.LogWarning("WeatherSystem not ready yet.");
             return;
         }
 
@@ -21,15 +20,15 @@ public class DashboardWeatherDisplay : MonoBehaviour
     private void OnDisable()
     {
         if (WeatherSystem.Instance == null || WeatherSystem.Instance.Context == null)
+        {
             return;
+        }
 
         WeatherSystem.Instance.Context.OnWeatherChanged -= UpdateUI;
     }
 
     private void UpdateUI(WeatherData data)
     {
-        Debug.Log("Dashboard UpdateUI CALLED");
-
         temperatureText.text = $"{data.temperature}°C";
         windText.text = $"{data.windSpeed} km/h";
         conditionText.text = $"{data.weatherType}";
