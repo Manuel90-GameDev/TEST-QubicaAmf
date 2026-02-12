@@ -3351,7 +3351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cdd547359931f49a570278fb941e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionalLight: {fileID: 410087040}
+  directionalLight: {fileID: 410087039}
   fxLoader: {fileID: 983210946}
 --- !u!114 &983210946
 MonoBehaviour:

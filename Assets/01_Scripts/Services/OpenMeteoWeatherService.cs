@@ -65,7 +65,8 @@ public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
         return new WeatherData(type)
         {
             temperature = cw.temperature,
-            windSpeed = cw.windspeed
+            windSpeed = cw.windspeed,
+            is_day = cw.is_day == 1
         };
     }
 }

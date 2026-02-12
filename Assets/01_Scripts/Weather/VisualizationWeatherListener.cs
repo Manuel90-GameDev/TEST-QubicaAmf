@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class VisualizationWeatherListener : MonoBehaviour
 {
-    [SerializeField] private Light directionalLight;
+    [SerializeField] private GameObject directionalLight;
     [SerializeField] private AddressablesWeatherFXLoader fxLoader;
 
     private void OnEnable()
@@ -25,19 +25,33 @@ public class VisualizationWeatherListener : MonoBehaviour
     {
         fxLoader.ClearCurrentFX();
 
+        Light directionalLightComponent = directionalLight.GetComponent<Light>();
+        Transform directionalLightTransform = directionalLight.GetComponent<Transform>();
+
+        if (data.is_day)
+        {
+            directionalLightComponent.intensity = 1f;
+            directionalLightTransform.localRotation = Quaternion.Euler(50f, -30f, 0f);
+        }
+        else
+        {
+            directionalLightComponent.intensity = 0.2f;
+            directionalLightTransform.localRotation = Quaternion.Euler(20f, -30f, 0f);
+        }
+
         switch (data.weatherType)
         {
             case WeatherType.Clear:
-                directionalLight.color = Color.white;
+                directionalLightComponent.color = Color.white;
                 break;
 
             case WeatherType.Rain:
-                directionalLight.color = Color.gray;
+                directionalLightComponent.color = Color.gray;
                 fxLoader.LoadFX("RainFX");
                 break;
 
             case WeatherType.Snow:
-                directionalLight.color = Color.cyan;
+                directionalLightComponent.color = Color.cyan;
                 fxLoader.LoadFX("SnowFX");
                 break;
         }
