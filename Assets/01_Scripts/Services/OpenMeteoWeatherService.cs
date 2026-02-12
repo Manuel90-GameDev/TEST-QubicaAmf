@@ -5,6 +5,9 @@ using System.Globalization;
 
 public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
 {
+    [SerializeField] private int maxRetries = 3;
+    [SerializeField] private float retryDelay = 2f;
+
     private const string URL = "https://api.open-meteo.com/v1/forecast?current_weather=true";
 
     public void RequestWeather(LocationData location)
@@ -20,24 +23,44 @@ public class OpenMeteoWeatherService : MonoBehaviour, IWeatherService
 
         string url = $"{URL}&latitude={lat}&longitude={lon}";
 
-        using var request = UnityWebRequest.Get(url);
-
-        yield return request.SendWebRequest();
-
-        if (request.result != UnityWebRequest.Result.Success)
+        for (int attempt = 1; attempt <= maxRetries; attempt++)
         {
-            Debug.LogError("API ERROR: " + request.error);
-            yield break;
+            using var request = UnityWebRequest.Get(url);
+
+            yield return request.SendWebRequest();
+
+            long code = request.responseCode;
+
+            if (code >= 400 && code < 500)
+            {
+                Debug.LogError("API ERROR: " + request.error);
+                yield break;
+            }
+
+            if (code >= 200 && code < 300)
+            {
+                Debug.Log("API RESPONSE: " + request.downloadHandler.text);
+
+                var json = request.downloadHandler.text;
+                var response = JsonUtility.FromJson<OpenMeteoResponse>(json);
+
+                var data = ConvertWeather(response.current_weather);
+
+                WeatherSystem.Instance.Context.SetWeather(data);
+
+                yield break;
+            }
+
+            Debug.LogWarning($"SERVER ERROR {code} Attempt {attempt}");
+
+            if (attempt < maxRetries)
+            {
+                Debug.Log("Retrying...");
+                yield return new WaitForSeconds(retryDelay);
+            }
         }
 
-        Debug.Log("API RESPONSE: " + request.downloadHandler.text);
-
-        var json = request.downloadHandler.text;
-        var response = JsonUtility.FromJson<OpenMeteoResponse>(json);
-
-        var data = ConvertWeather(response.current_weather);
-
-        WeatherSystem.Instance.Context.SetWeather(data);
+        Debug.LogError("API FAILED AFTER ALL RETRIES");
     }
 
     private WeatherData ConvertWeather(CurrentWeather cw)
