@@ -9,6 +9,22 @@ public class DashboardLocationController : MonoBehaviour
     [SerializeField] private TMP_InputField longitudeInput;
     [SerializeField] private WeatherServiceController weatherService;
 
+    private const string LATITUDE_KEY = "last_latitude";
+    private const string LONGITUDE_KEY = "last_longitude";
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey(LATITUDE_KEY))
+        {
+            float lat = PlayerPrefs.GetFloat(LATITUDE_KEY);
+            float lon = PlayerPrefs.GetFloat(LONGITUDE_KEY);
+
+            Debug.Log("Loading cached location");
+
+            weatherService.RequestWeather(new LocationData(lat, lon));
+        }
+    }
+
     public void RequestWeatherFromUI()
     {
         LocationType selected = (LocationType)locationDropdown.value;
@@ -28,6 +44,10 @@ public class DashboardLocationController : MonoBehaviour
         };
 
         weatherService.RequestWeather(location);
+
+        PlayerPrefs.SetFloat(LATITUDE_KEY, location.latitude);
+        PlayerPrefs.SetFloat(LONGITUDE_KEY, location.longitude);
+        PlayerPrefs.Save();
     }
 
     public void OnLocationChanged(int value)
